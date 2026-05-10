@@ -1,1 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colombia Meets Japan — Intercultural Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1814;
+  --paper: #f5f0e8;
+  --cream: #ede8dc;
+  --red: #c0392b;
+  --gold: #b8860b;
+  --teal: #2a7c6f;
+  --blue: #1d4e7a;
+  --muted: #6b6560;
+  --border: #d4cfc4;
+  --white: #ffffff;
+  --jp-red: #bc002d;
+  --co-yellow: #ffd700;
+  --co-blue: #003087;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  min-height:100vh;
+}
 
+/* HERO */
+.hero{
+  background:var(--ink);
+  color:var(--paper);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+.hero-left{
+  padding:4rem 3rem 4rem 4rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  z-index:2;
+}
+.hero-right{
+  position:relative;
+  overflow:hidden;
+}
+.hero-right img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:brightness(.55) saturate(1.1);
+}
+.hero-right-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(26,24,20,.6) 0%,rgba(188,0,45,.12) 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+  padding:2.5rem;
+}
+.hero-right-overlay .kanji{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(5rem,10vw,8rem);
+  font-weight:700;
+  color:rgba(255,255,255,.15);
+  line-height:1;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-55%);
+  pointer-events:none;
+  user-select:none;
+}
+.hero-right-caption{
+  font-family:'DM Mono',monospace;
+  font-size:.65rem;
+  letter-spacing:.18em;
+  color:rgba(245,240,232,.6);
+  text-transform:uppercase;
+  position:relative;
+  z-index:2;
+}
+.lang-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  font-family:'DM Mono',monospace;
+  font-size:.7rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--gold);
+  border:1px solid var(--gold);
+  padding:.4rem .8rem;
+  border-radius:2px;
+  margin-bottom:2rem;
+  width:fit-content;
+}
+.hero h1{
+  font-family:'Noto Serif JP',serif;
+  font-weight:300;
+  font-size:clamp(2.5rem,5vw,4rem);
+  line-height:1.15;
+  margin-bottom:1rem;
+  color:var(--paper);
+}
+.hero h1 span{color:var(--jp-red)}
+.hero-sub{
+  font-size:1rem;
+  color:#a09890;
+  line-height:1.7;
+  max-width:420px;
+  margin-bottom:2rem;
+}
+.hero-flags{
+  display:flex;
+  gap:.5rem;
+  margin-bottom:2.5rem;
+  flex-wrap:wrap;
+}
+.flag-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  font-size:.8rem;
+  padding:.4rem .875rem;
+  border-radius:20px;
+  font-weight:500;
+}
+.flag-jp{background:rgba(188,0,45,.15);color:#ff6b7a;border:1px solid rgba(188,0,45,.3)}
+.flag-co{background:rgba(0,48,135,.2);color:#6b9fff;border:1px solid rgba(0,48,135,.4)}
+.start-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.75rem;
+  background:var(--jp-red);
+  color:#fff;
+  padding:.875rem 1.75rem;
+  border-radius:3px;
+  font-size:.95rem;
+  font-weight:500;
+  text-decoration:none;
+  transition:all .2s;
+  width:fit-content;
+  border:none;
+  cursor:pointer;
+}
+.start-btn:hover{background:#a0001f;transform:translateY(-1px)}
+.hero-stats{
+  display:flex;
+  gap:2rem;
+  margin-top:2rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.hero-stat .num{font-family:'Noto Serif JP',serif;font-size:1.5rem;color:var(--paper);font-weight:700}
+.hero-stat .lbl{font-size:.7rem;color:#7a736a;text-transform:uppercase;letter-spacing:.1em}
+
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(245,240,232,.97);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  padding:0 2rem;
+}
+.nav-inner{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{
+  font-family:'Noto Serif JP',serif;
+  font-size:.85rem;
+  color:var(--jp-red);
+  font-weight:700;
+  padding:.875rem 1.5rem .875rem 0;
+  border-right:1px solid var(--border);
+  margin-right:1rem;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.nav-link{
+  font-size:.75rem;
+  font-weight:500;
+  color:var(--muted);
+  text-decoration:none;
+  padding:.875rem .75rem;
+  white-space:nowrap;
+  transition:color .15s;
+  border-bottom:2px solid transparent;
+  letter-spacing:.02em;
+}
+.nav-link:hover{color:var(--ink);border-bottom-color:var(--jp-red)}
+
+/* MAIN */
+main{max-width:1100px;margin:0 auto;padding:0 2rem 6rem}
+
+/* SECTION */
+.section{
+  padding:5rem 0;
+  border-bottom:1px solid var(--border);
+}
+.section-label{
+  font-family:'DM Mono',monospace;
+  font-size:.65rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--jp-red);
+  margin-bottom:.75rem;
+}
+.section-title{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.6rem,3vw,2.2rem);
+  font-weight:300;
+  color:var(--ink);
+  margin-bottom:1rem;
+  line-height:1.3;
+}
+.section-intro{
+  font-size:1rem;
+  color:var(--muted);
+  line-height:1.75;
+  max-width:640px;
+  margin-bottom:2.5rem;
+}
+
+/* CARDS */
+.card-grid{display:grid;gap:1rem}
+.card-grid-2{grid-template-columns:1fr 1fr}
+.card-grid-3{grid-template-columns:repeat(3,1fr)}
+.card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:1.5rem;
+}
+.card-title{
+  font-family:'Noto Serif JP',serif;
+  font-size:1rem;
+  font-weight:700;
+  margin-bottom:.75rem;
+  color:var(--ink);
+}
+.card p{font-size:.875rem;color:var(--muted);line-height:1.75}
+
+/* STATS */
+.stats-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:4px;
+  overflow:hidden;
+  margin-bottom:2.5rem;
+}
+.stat-box{
+  background:var(--white);
+  padding:1.5rem;
+  text-align:center;
+}
+.stat-box .val{
+  font-family:'Noto Serif JP',serif;
+  font-size:1.4rem;
+  font-weight:700;
+  color:var(--ink);
+  display:block;
+  margin-bottom:.25rem;
+}
+.stat-box .lbl{font-size:.72rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+
+/* PHOTO STRIP */
+.photo-strip{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:6px;
+  margin-bottom:1.75rem;
+  border-radius:6px;
+  overflow:hidden;
+  height:220px;
+}
+.photo-strip img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .4s ease;
+}
+.photo-strip img:hover{transform:scale(1.04)}
+
+/* IMAGE COMPONENTS */
+.img-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.img-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+.img-card{
+  border-radius:4px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--white);
+}
+.img-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  display:block;
+  transition:transform .35s ease;
+}
+.img-card:hover img{transform:scale(1.04)}
+.img-card-body{padding:.875rem}
+.img-card-label{font-size:.68rem;font-family:'DM Mono',monospace;color:var(--jp-red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
+.img-card-title{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:.35rem}
+.img-card-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+
+.side-img-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:1.5rem;align-items:start;margin-bottom:1.5rem}
+.side-img-layout img{width:100%;height:100%;min-height:220px;object-fit:cover;border-radius:4px;border:1px solid var(--border);display:block}
+.img-caption{font-size:.68rem;font-family:'DM Mono',monospace;color:var(--muted);letter-spacing:.05em;margin-top:.4rem;margin-bottom:1.5rem;display:block}
+
+/* COMPARE TABLE */
+.compare{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.875rem}
+.compare th{background:var(--ink);color:var(--paper);padding:.75rem 1rem;text-align:left;font-weight:500;letter-spacing:.03em;font-size:.75rem;text-transform:uppercase}
+.compare td{padding:.75rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;color:var(--muted)}
+.compare tr:nth-child(even) td{background:var(--cream)}
+.compare td:first-child{font-weight:500;color:var(--ink);font-size:.8rem;white-space:nowrap}
+.jp-cell{color:#8b000d;font-weight:400}
+.co-cell{color:#00206b;font-weight:400}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:2rem;margin:1.5rem 0}
+.timeline::before{content:'';position:absolute;left:.75rem;top:0;bottom:0;width:1px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:1.75rem}
+.tl-item::before{content:'';position:absolute;left:-1.375rem;top:.35rem;width:9px;height:9px;border-radius:50%;background:var(--jp-red);border:2px solid var(--paper);box-shadow:0 0 0 1px var(--jp-red)}
+.tl-year{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--jp-red);letter-spacing:.1em;margin-bottom:.25rem}
+.tl-title{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:.25rem}
+.tl-desc{font-size:.83rem;color:var(--muted);line-height:1.65}
+
+/* BADGE */
+.badge{display:inline-block;font-size:.68rem;padding:.2rem .6rem;border-radius:2px;font-weight:500;letter-spacing:.05em;text-transform:uppercase}
+.badge-jp{background:rgba(188,0,45,.1);color:var(--jp-red);border:1px solid rgba(188,0,45,.2)}
+.badge-co{background:rgba(0,48,135,.08);color:#1d4e7a;border:1px solid rgba(0,48,135,.15)}
+
+/* HOFSTEDE BARS */
+.dim-section{margin-bottom:1.5rem}
+.dim-name{font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.5rem}
+.dim-bars{display:flex;flex-direction:column;gap:6px}
+.dim-bar-row{display:flex;align-items:center;gap:.75rem}
+.dim-country{font-size:.7rem;color:var(--muted);width:55px;flex-shrink:0;text-align:right;font-family:'DM Mono',monospace}
+.dim-track{flex:1;height:7px;background:var(--cream);border-radius:3px;overflow:hidden}
+.dim-fill{height:100%;border-radius:3px;transition:width 1.2s ease}
+.dim-fill-jp{background:var(--jp-red)}
+.dim-fill-co{background:var(--co-blue)}
+
+/* DO/DONT */
+.do-dont{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.do-list,.dont-list{border-radius:4px;padding:1.5rem}
+.do-list{background:#f0faf4;border:1px solid #8bc4a0}
+.dont-list{background:#fff4f4;border:1px solid #e9a0a0}
+.do-list h3{color:#1a6b3a;font-size:.85rem;font-weight:600;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace}
+.dont-list h3{color:#8b1a1a;font-size:.85rem;font-weight:600;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace}
+.item-row{display:flex;gap:.625rem;align-items:flex-start;margin-bottom:.75rem}
+.item-row:last-child{margin-bottom:0}
+.item-icon{font-size:1rem;flex-shrink:0;margin-top:.05rem}
+.item-text{font-size:.83rem;line-height:1.6;color:var(--muted)}
+
+/* LEWIS MODEL */
+.lewis-triangle{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+.lewis-box{border-radius:4px;padding:1.25rem}
+.lbox-1{background:#e8f4fd;border:1px solid #b3d4f0}
+.lbox-2{background:#fdecea;border:1px solid #f0b3b0}
+.lbox-3{background:#edfaed;border:1px solid #b0e0b0}
+.lewis-box .ltype{font-family:'Noto Serif JP',serif;font-size:.9rem;font-weight:700;margin-bottom:.4rem;color:var(--ink)}
+.lewis-box .ldesc{font-size:.75rem;color:var(--muted);line-height:1.6}
+
+/* HALL */
+.hall-compare{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin:1.5rem 0}
+.hall-card{border-radius:4px;padding:1.25rem}
+.hall-jp{background:#fff1f2;border:1px solid #fcc}
+.hall-co{background:#f0f4ff;border:1px solid #c8d4f8}
+.hall-divider{display:flex;flex-direction:column;align-items:center;gap:.3rem}
+.hall-vs{font-family:'Noto Serif JP',serif;font-size:1.5rem;font-weight:700;color:var(--border)}
+.hall-tag{font-size:.65rem;font-family:'DM Mono',monospace;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;text-align:center}
+.hall-card h4{font-size:.85rem;font-weight:600;margin-bottom:.5rem}
+.hall-jp h4{color:#8b1a1a}
+.hall-co h4{color:#1d4e7a}
+.hall-card p{font-size:.78rem;color:var(--muted);line-height:1.65}
+
+/* ANIME CARDS */
+.anime-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+.anime-card{border-radius:4px;overflow:hidden;border:1px solid var(--border);background:var(--white)}
+.anime-accent{height:4px}
+.naruto-a{background:#ff6b00}
+.dragon-a{background:#e00}
+.pokemon-a{background:#f5c400}
+.anime-body{padding:1rem}
+.anime-series{font-size:.85rem;font-weight:600;color:var(--ink);margin-bottom:.35rem}
+.anime-value{font-size:.72rem;color:var(--jp-red);font-style:italic;margin-bottom:.35rem}
+.anime-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+
+/* QUIZ */
+.quiz-wrapper{background:var(--ink);color:var(--paper);border-radius:6px;padding:2rem;margin-top:2rem}
+.quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.quiz-title{font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:700;color:var(--paper)}
+.quiz-progress{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--gold)}
+.q-text{font-size:.95rem;line-height:1.65;margin-bottom:1.25rem;color:#d4cfc4}
+.q-scenario{background:rgba(255,255,255,.05);border-left:3px solid var(--gold);padding:.875rem 1rem;font-size:.85rem;color:#a09890;line-height:1.6;margin-bottom:1.25rem;border-radius:0 3px 3px 0}
+.opts{display:flex;flex-direction:column;gap:.5rem}
+.opt{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:.75rem 1rem;font-size:.875rem;color:#c4bfb8;cursor:pointer;text-align:left;transition:all .15s}
+.opt:hover:not(:disabled){background:rgba(255,255,255,.12);color:var(--paper);border-color:rgba(255,255,255,.25)}
+.opt.correct{background:rgba(46,160,87,.2);border-color:#2ea057;color:#7ee3a0}
+.opt.wrong{background:rgba(220,53,69,.15);border-color:#dc3545;color:#f5a0a8}
+.opt:disabled{cursor:default}
+.q-feedback{margin-top:1rem;padding:.875rem 1rem;border-radius:3px;font-size:.83rem;line-height:1.6;display:none}
+.q-feedback.show{display:block}
+.q-feedback.correct{background:rgba(46,160,87,.15);border:1px solid rgba(46,160,87,.4);color:#7ee3a0}
+.q-feedback.wrong{background:rgba(220,53,69,.1);border:1px solid rgba(220,53,69,.3);color:#f5a0a8}
+.quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem}
+.quiz-btn{background:var(--jp-red);color:#fff;border:none;padding:.6rem 1.25rem;border-radius:3px;font-size:.83rem;font-weight:500;cursor:pointer;transition:background .15s}
+.quiz-btn:hover{background:#a0001f}
+.quiz-btn:disabled{background:#3a3530;color:#6b6560;cursor:default}
+.score-display{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--gold)}
+.quiz-result{text-align:center;padding:1.5rem}
+.quiz-result .big{font-family:'Noto Serif JP',serif;font-size:2.5rem;font-weight:700;color:var(--gold);margin-bottom:.5rem}
+.quiz-result p{color:#a09890;font-size:.875rem;margin-bottom:1rem}
+.retry-btn{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--paper);padding:.5rem 1.25rem;border-radius:3px;font-size:.83rem;cursor:pointer;transition:all .15s}
+.retry-btn:hover{background:rgba(255,255,255,.1)}
+
+/* REFS */
+.ref-list{list-style:none}
+.ref-item{font-size:.78rem;color:var(--muted);line-height:1.7;padding:.75rem 0;border-bottom:1px solid var(--border);padding-left:2rem;text-indent:-2rem}
+
+/* PROGRESS BAR */
+.prog-bar{height:3px;background:var(--jp-red);width:0;position:fixed;top:0;left:0;z-index:999;transition:width .25s}
+
+/* BANNER IMAGE */
+.img-banner{width:100%;height:260px;object-fit:cover;border-radius:4px;display:block;margin-bottom:1.5rem;border:1px solid var(--border)}
+
+/* RELIGION BOXES */
+.reli-box{border-radius:4px;padding:1rem;margin-bottom:.75rem}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:3rem 1.5rem}
+  .card-grid-2,.card-grid-3,.do-dont,.anime-grid,.lewis-triangle,.img-grid-2,.img-grid-3{grid-template-columns:1fr}
+  .hall-compare{grid-template-columns:1fr;gap:.5rem}
+  .hall-vs{display:none}
+  .stats-row{grid-template-columns:1fr}
+  .side-img-layout{grid-template-columns:1fr}
+  main{padding:0 1rem 4rem}
+  nav{padding:0 1rem}
+  .photo-strip{grid-template-columns:1fr;height:auto}
+  .photo-strip img{height:180px}
+}
+</style>
+</head>
+<body>
+
+<div class="prog-bar" id="progBar"></div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <div class="lang-badge">Intercultural Guide · 2025</div>
+    <h1>Colombia<br>meets <span>Japan</span></h1>
+    <p class="hero-sub">A practical, interactive guide for Colombian travelers — understand Japanese culture, communication styles, and social norms before you arrive.</p>
+    <div class="hero-flags">
+      <span class="flag-pill flag-jp">🇯🇵 Reactive Culture</span>
+      <span class="flag-pill flag-co">🇨🇴 Multi-active Culture</span>
+    </div>
+    <button class="start-btn" onclick="document.getElementById('overview').scrollIntoView({behavior:'smooth'})">
+      Begin the guide ↓
+    </button>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">10</div><div class="lbl">Sections</div></div>
+      <div class="hero-stat"><div class="num">4</div><div class="lbl">Quizzes</div></div>
+      <div class="hero-stat"><div class="num">3</div><div class="lbl">Frameworks</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Mount Fuji at night/dusk with lake reflection -->
+    <img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=900&q=80&auto=format&fit=crop" alt="Mount Fuji with lake reflection" loading="eager">
+    <div class="hero-right-overlay">
+      <div class="kanji">日本</div>
+      <div class="hero-right-caption">Mount Fuji · Fujikawaguchiko, Japan</div>
+    </div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">🌸 JP Guide</div>
+    <a class="nav-link" href="#overview">Country</a>
+    <a class="nav-link" href="#history">History</a>
+    <a class="nav-link" href="#culture">Culture</a>
+    <a class="nav-link" href="#nonverbal">Nonverbal</a>
+    <a class="nav-link" href="#lewis">Lewis Model</a>
+    <a class="nav-link" href="#hall">Hall's Theory</a>
+    <a class="nav-link" href="#hofstede">Hofstede</a>
+    <a class="nav-link" href="#dos">Do's & Don'ts</a>
+    <a class="nav-link" href="#quizzes">Quizzes</a>
+    <a class="nav-link" href="#refs">References</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- OVERVIEW -->
+<section class="section" id="overview">
+  <div class="section-label">01 — Country Overview</div>
+  <h2 class="section-title">Japan at a glance</h2>
+  <p class="section-intro">Japan is a nation shaped by discipline, tradition, and rapid modernization. Before visiting, understanding the basics will help you navigate daily life with confidence.</p>
+
+  <div class="photo-strip">
+    <!-- Shinkansen bullet train -->
+    <img src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?w=600&q=75&auto=format&fit=crop" alt="Shinkansen bullet train" loading="lazy">
+    <!-- Torii gate at Fushimi Inari -->
+    <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=75&auto=format&fit=crop" alt="Fushimi Inari torii gates" loading="lazy">
+    <!-- Cherry blossoms sakura -->
+    <img src="https://images.unsplash.com/photo-1522383225653-ed111181a951?w=600&q=75&auto=format&fit=crop" alt="Cherry blossoms sakura Japan" loading="lazy">
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box"><span class="val">¥ Yen</span><span class="lbl">Currency</span></div>
+    <div class="stat-box"><span class="val">日本語</span><span class="lbl">Official Language</span></div>
+    <div class="stat-box"><span class="val">Naruhito</span><span class="lbl">Current Emperor</span></div>
+  </div>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-title">Government & Society</div>
+      <p>Japan is a <strong>constitutional monarchy</strong>. The Emperor (currently <strong>Naruhito</strong>) holds a symbolic, ceremonial role, while elected officials govern. The Prime Minister leads the government. Japanese society values harmony, hierarchy, and collective well-being — visible in workplaces, schools, and daily interactions.</p>
+      <p style="margin-top:.75rem"><strong>English proficiency note:</strong> While airports and major tourist areas have bilingual signage, many shops, restaurants, and local areas operate primarily in Japanese. Learning basic phrases or using a translation app is highly recommended.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Geopolitical Position</div>
+      <p>Japan is an <strong>island nation</strong> in the Pacific Ocean, located along key maritime trade routes. It borders China, both Koreas, and Russia — making it a central actor in East Asian security. Key points:</p>
+      <ul style="margin-top:.75rem;padding-left:1rem;font-size:.83rem;color:var(--muted);line-height:2">
+        <li>Close strategic alliance with the United States</li>
+        <li>Active in G7, ASEAN, and international diplomacy</li>
+        <li>Pacifist Constitution (Article 9) limits military use</li>
+        <li>Efficient transportation & technology recognized worldwide</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="section" id="history">
+  <div class="section-label">02 — Historical & Religious Background</div>
+  <h2 class="section-title">The events that shaped modern Japan</h2>
+  <p class="section-intro">Understanding Japan's history helps explain why its people behave the way they do — from discipline and punctuality to respect for hierarchy and collective responsibility.</p>
+
+  <div class="img-grid-2">
+    <div class="img-card">
+      <!-- Meiji Jingu shrine / traditional Japan -->
+      <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=600&q=75&auto=format&fit=crop" alt="Meiji Jingu Shrine Tokyo" loading="lazy">
+      <div class="img-card-body">
+        <div class="img-card-label">1868 — History</div>
+        <div class="img-card-title">The Meiji Restoration</div>
+        <div class="img-card-desc">Emperor Meiji's reign launched Japan's rapid modernization — merging Western industry with traditional hierarchy. This era forged Japan's famous work ethic and discipline.</div>
+      </div>
+    </div>
+    <div class="img-card">
+      <!-- Fushimi Inari torii gates path -->
+      <img src="https://images.unsplash.com/photo-1551693002-4e59a21b5f4f?w=600&q=75&auto=format&fit=crop" alt="Fushimi Inari Shrine torii gates" loading="lazy">
+      <div class="img-card-body">
+        <div class="img-card-label">Religion — Shinto</div>
+        <div class="img-card-title">Torii Gates — Fushimi Inari Shrine</div>
+        <div class="img-card-desc">Thousands of vermillion torii gates line the sacred path at Fushimi Inari, Kyoto — a living symbol of Shinto's harmony between humanity and the spiritual world.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-title">Key Historical Events</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">1868</div>
+          <div class="tl-title">Meiji Restoration</div>
+          <div class="tl-desc">Japan rapidly modernized, absorbing Western technology while preserving social hierarchy. Created the unique blend of tradition and progress still visible today.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1900s–1945</div>
+          <div class="tl-title">Imperial Expansion & WWII</div>
+          <div class="tl-desc">Japan's imperial ambitions led to war across Asia. The atomic bombings of Hiroshima and Nagasaki (1945) left profound collective trauma and shaped a strong pacifist national identity.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1945–1952</div>
+          <div class="tl-title">American Occupation</div>
+          <div class="tl-desc">The U.S. restructured Japan's government, economy, and education. Democratic institutions were adopted while internal hierarchical values persisted beneath the surface.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1950s–1980s</div>
+          <div class="tl-title">The Economic Miracle</div>
+          <div class="tl-desc">Japan became the world's second-largest economy through collective effort, discipline, and long-term planning — values still central to the modern workplace and culture.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Religion: Shinto & Buddhism</div>
+      <p>Most Japanese practice a seamless blend of both traditions, often celebrating Shinto rituals at birth and Buddhist rites at death. Religion permeates everyday life without dominating it.</p>
+      <div style="margin-top:1rem;display:flex;flex-direction:column;gap:.75rem">
+        <div class="reli-box" style="background:#fff8f0;border:1px solid #f5d8a8">
+          <div style="font-size:.82rem;font-weight:600;color:#8b5a00;margin-bottom:.35rem">⛩ Shinto</div>
+          <p style="font-size:.78rem;color:var(--muted);line-height:1.65">Japan's indigenous spirituality. Emphasizes harmony with nature, ritual purity, and ancestral spirits. <em>Jinja</em> (shrines) are spaces of prayer and seasonal festivals.</p>
+        </div>
+        <div class="reli-box" style="background:#f5f0ff;border:1px solid #c8b8e8">
+          <div style="font-size:.82rem;font-weight:600;color:#4a2a80;margin-bottom:.35rem">🪔 Buddhism</div>
+          <p style="font-size:.78rem;color:var(--muted);line-height:1.65">Introduced from Korea/China, Buddhism brought ideas of impermanence, compassion, and respect for elders. <em>Otera</em> (temples) are spaces for meditation and ancestral rites.</p>
+        </div>
+      </div>
+      <p style="margin-top:1rem;font-size:.8rem;color:var(--muted);line-height:1.65"><strong style="color:var(--ink)">Cultural connection:</strong> These beliefs reinforce <em>wa</em> (harmony), respect, ritual behavior, and communal responsibility — the same values you will notice in daily Japanese interactions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE -->
+<section class="section" id="culture">
+  <div class="section-label">03 — Cultural Behavior & Communication</div>
+  <h2 class="section-title">How Japanese people communicate and interact</h2>
+  <p class="section-intro">From the way people greet each other to the silence on public trains, Japanese social behavior follows a set of deeply embedded norms. Here's what every Colombian traveler should know.</p>
+
+  <div class="img-grid-3">
+    <div class="img-card">
+      <!-- Women in kimono Kyoto -->
+      <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=500&q=75&auto=format&fit=crop" alt="Women in kimono Kyoto Japan" loading="lazy">
+      <div class="img-card-body">
+        <div class="img-card-label">Traditional Attire</div>
+        <div class="img-card-title">Kimono & Yukata</div>
+        <div class="img-card-desc">Worn at festivals, ceremonies, and temples. The kimono is Japan's most iconic traditional garment — elegant, layered, and deeply symbolic.</div>
+      </div>
+    </div>
+    <div class="img-card">
+      <!-- Senso-ji temple Asakusa -->
+      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=75&auto=format&fit=crop" alt="Senso-ji Temple Asakusa Tokyo" loading="lazy">
+      <div class="img-card-body">
+        <div class="img-card-label">Sacred Spaces</div>
+        <div class="img-card-title">Senso-ji Temple, Asakusa</div>
+        <div class="img-card-desc">Tokyo's oldest temple draws millions yearly. Behavior here must be respectful — quiet voices, no smoking, and proper dress are expected.</div>
+      </div>
+    </div>
+    <div class="img-card">
+      <!-- Shibuya crossing at night -->
+      <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=500&q=75&auto=format&fit=crop" alt="Shibuya crossing Tokyo at night" loading="lazy">
+      <div class="img-card-body">
+        <div class="img-card-label">Modern Japan</div>
+        <div class="img-card-title">Shibuya Crossing</div>
+        <div class="img-card-desc">The world's busiest pedestrian crossing — an icon of urban Japan. Notice how thousands of people cross simultaneously in organized silence.</div>
+      </div>
+    </div>
+  </div>
+
+  <table class="compare">
+    <thead>
+      <tr>
+        <th>Situation</th>
+        <th>🇯🇵 Japan</th>
+        <th>🇨🇴 Colombia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Greeting</td>
+        <td class="jp-cell">Bow (slight for strangers, deeper for respect). No hugging or kissing strangers.</td>
+        <td class="co-cell">Hugs, handshakes, and kisses on the cheek are the norm — even with new people.</td>
+      </tr>
+      <tr>
+        <td>Public transport</td>
+        <td class="jp-cell">Silence expected. Phone calls prohibited. No eating on most trains. Music through headphones only.</td>
+        <td class="co-cell">Lively conversation and social interaction are common and culturally expected.</td>
+      </tr>
+      <tr>
+        <td>Queuing</td>
+        <td class="jp-cell">Strict single-file lines, marked on platforms. Cutting the queue is deeply offensive.</td>
+        <td class="co-cell">Queuing is common but informal; minor breaches are often overlooked.</td>
+      </tr>
+      <tr>
+        <td>Hierarchy</td>
+        <td class="jp-cell">Age and status determine how you speak and act. Business cards are given/received with both hands and a bow.</td>
+        <td class="co-cell">Hierarchy exists but relationships often override it. First-name basis is common.</td>
+      </tr>
+      <tr>
+        <td>Traditional attire</td>
+        <td class="jp-cell">Kimono (formal) and Yukata (casual summer wear) are worn at festivals and ceremonies.</td>
+        <td class="co-cell">Traditional attire varies by region; <em>pollera</em> and <em>sombrero vueltiao</em> used in festivals.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:400;margin:2rem 0 1rem;color:var(--ink)">Modern culture: Anime & urban expression</h3>
+
+  <div class="side-img-layout">
+    <div>
+      <!-- Bowing / formal Japanese greeting -->
+      <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=75&auto=format&fit=crop" alt="Japanese traditional greeting bow" loading="lazy">
+      <span class="img-caption">Bowing is the foundation of Japanese greeting culture — depth signals the level of respect.</span>
+    </div>
+    <div>
+      <!-- Akihabara neon lights -->
+      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=700&q=75&auto=format&fit=crop" alt="Akihabara anime district Tokyo" loading="lazy">
+      <span class="img-caption">Akihabara, Tokyo — the global capital of anime, manga, and gaming culture.</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem">
+    <div class="card-title">Anime as cultural export</div>
+    <p>After WWII, Japan developed a unique animation style — anime — with its own visual language, narrative conventions, and emotional depth. Today it is a global cultural export present in advertising, merchandise, themed cafés, events, and tourism. What may seem "weird" to outsiders — cosplay, themed districts like Akihabara, or Shinjuku's neon nightlife — often reflects <strong>creative youth culture and entertainment districts</strong>, not everyday social norms.</p>
+  </div>
+
+  <div class="anime-grid">
+    <div class="anime-card">
+      <div class="anime-accent naruto-a"></div>
+      <div class="anime-body">
+        <div class="anime-series">Naruto</div>
+        <div class="anime-value">Values: Perseverance & hard work</div>
+        <div class="anime-desc">A young outcast who becomes a hero through relentless effort. Reflects the Japanese ideal of <em>ganbaru</em> — never giving up regardless of obstacles.</div>
+      </div>
+    </div>
+    <div class="anime-card">
+      <div class="anime-accent dragon-a"></div>
+      <div class="anime-body">
+        <div class="anime-series">Dragon Ball</div>
+        <div class="anime-value">Values: Loyalty & surpassing limits</div>
+        <div class="anime-desc">Goku constantly trains beyond his limits. Reflects loyalty to mentors and allies — a mirror of Japan's deep respect for teachers and <em>senpai</em> relationships.</div>
+      </div>
+    </div>
+    <div class="anime-card">
+      <div class="anime-accent pokemon-a"></div>
+      <div class="anime-body">
+        <div class="anime-series">Pokémon</div>
+        <div class="anime-value">Values: Friendship & respect for nature</div>
+        <div class="anime-desc">The bond between trainer and Pokémon mirrors Shinto's respect for living things and the Japanese concept of finding harmony in the natural world.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NONVERBAL -->
+<section class="section" id="nonverbal">
+  <div class="section-label">04 — Nonverbal Communication</div>
+  <h2 class="section-title">Haptics, proxemics & chronemics</h2>
+  <p class="section-intro">Much of Japanese communication happens without words. Understanding these three nonverbal dimensions will prevent many embarrassing mistakes.</p>
+
+  <!-- Ramen bar / quiet dining -->
+  <img class="img-banner" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1100&q=80&auto=format&fit=crop" alt="Japanese ramen restaurant quiet dining" loading="lazy">
+  <span class="img-caption" style="margin-top:-.75rem">A Shinjuku ramen restaurant — even dining alone is a quiet, focused experience in Japan.</span>
+
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div style="font-size:1.75rem;margin-bottom:.75rem">🤝</div>
+      <div class="card-title">Haptics (touch)</div>
+      <p>Japan is a <strong>low-contact culture</strong>. Physical touch between strangers or acquaintances is minimal. Bowing replaces handshakes, hugs, and kisses. Touching someone on the shoulder or back — normal in Colombia — may feel intrusive to a Japanese person.</p>
+      <div style="margin-top:.75rem;display:flex;gap:.4rem;flex-wrap:wrap">
+        <span class="badge badge-jp">Low contact</span>
+        <span class="badge badge-co">High contact</span>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-size:1.75rem;margin-bottom:.75rem">↔️</div>
+      <div class="card-title">Proxemics (space)</div>
+      <p>Japan values <strong>greater interpersonal distance</strong> and embodies the concept of <em>Ma</em> — the idea that space between people is not emptiness but a form of respect. Colombians naturally interact at closer distances; stepping back is respectful in Japan.</p>
+      <div style="margin-top:.75rem;display:flex;gap:.4rem;flex-wrap:wrap">
+        <span class="badge badge-jp">Larger distance</span>
+        <span class="badge badge-co">Closer proximity</span>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-size:1.75rem;margin-bottom:.75rem">⏱️</div>
+      <div class="card-title">Chronemics (time)</div>
+      <p>Japan follows a <strong>monochronic</strong> time system: punctuality is essential, arriving early is expected, and lateness is disrespectful. Paradoxically, decision-making can be <em>slow</em> — because decisions require consensus (<em>nemawashi</em>). Colombia has a more flexible time perception (<em>hora colombiana</em>!).</p>
+      <div style="margin-top:.75rem;display:flex;gap:.4rem;flex-wrap:wrap">
+        <span class="badge badge-jp">Monochronic</span>
+        <span class="badge badge-co">Polychronic</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEWIS MODEL -->
+<section class="section" id="lewis">
+  <div class="section-label">05 — The Lewis Model</div>
+  <h2 class="section-title">Cultural types: where Colombia and Japan sit</h2>
+  <p class="section-intro">Richard D. Lewis (1996) proposed a model categorizing cultures into three types based on communication style, attitude to time, and relational behavior.</p>
+
+  <div class="lewis-triangle">
+    <div class="lewis-box lbox-1">
+      <div class="ltype">Linear-active</div>
+      <div class="ldesc">Task-focused, planners. Follow logic and facts. One task at a time. Examples: Germany, Switzerland, Scandinavia.</div>
+      <span class="badge badge-co" style="margin-top:.75rem;display:inline-block;background:rgba(0,48,135,.06);color:#5a7aaa;border-color:rgba(0,48,135,.1)">Task-oriented</span>
+    </div>
+    <div class="lewis-box lbox-2">
+      <div class="ltype">Multi-active</div>
+      <div class="ldesc">Relationship-focused, expressive, flexible with time. Comfortable with multi-tasking and emotional communication. <strong>Colombia</strong> fits here.</div>
+      <span class="badge badge-co" style="margin-top:.75rem;display:inline-block">🇨🇴 Colombia</span>
+    </div>
+    <div class="lewis-box lbox-3">
+      <div class="ltype">Reactive</div>
+      <div class="ldesc">Polite, reserved, hierarchical, excellent listeners. Avoid direct confrontation. Respond rather than initiate. <strong>Japan</strong> fits here.</div>
+      <span class="badge badge-jp" style="margin-top:.75rem;display:inline-block">🇯🇵 Japan</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Key differences that cause misunderstandings</div>
+    <table class="compare" style="margin:0">
+      <thead><tr><th>Area</th><th>🇯🇵 Japan (Reactive)</th><th>🇨🇴 Colombia (Multi-active)</th></tr></thead>
+      <tbody>
+        <tr><td>Communication</td><td class="jp-cell">Indirect, polite, avoids "no". Silence is meaningful.</td><td class="co-cell">Direct, expressive, verbal. Silence may feel uncomfortable.</td></tr>
+        <tr><td>Time</td><td class="jp-cell">Punctuality is respect. Every minute matters.</td><td class="co-cell">Flexibility is normal. Relationships can override schedules.</td></tr>
+        <tr><td>Listening</td><td class="jp-cell">Deep listeners. Respond only after fully processing.</td><td class="co-cell">Enthusiastic, may speak over others to show engagement.</td></tr>
+        <tr><td>Conflict</td><td class="jp-cell">Avoid confrontation at all costs. Harmony preserved.</td><td class="co-cell">More comfortable expressing disagreement verbally.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- HALL -->
+<section class="section" id="hall">
+  <div class="section-label">06 — Edward T. Hall's Cultural Theory</div>
+  <h2 class="section-title">High-context vs low-context communication</h2>
+  <p class="section-intro">Edward T. Hall (1976) showed that cultures differ profoundly in how meaning is communicated — through explicit words, or through context, silence, and relationship.</p>
+
+  <!-- Japanese street / Kyoto -->
+  <img class="img-banner" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1100&q=80&auto=format&fit=crop" alt="Kyoto traditional street Japan" loading="lazy">
+
+  <div class="hall-compare">
+    <div class="hall-card hall-jp">
+      <h4>🇯🇵 Japan — High-Context</h4>
+      <p>Meaning is <strong>implicit</strong>, dependent on context, relationship, and nonverbal cues. What is <em>not</em> said is often more important than what is said. "I'll think about it" often means no. Silence signals thoughtfulness or disagreement — not confusion.</p>
+    </div>
+    <div class="hall-divider">
+      <div class="hall-vs">vs</div>
+      <div class="hall-tag">Communication<br>Context</div>
+    </div>
+    <div class="hall-card hall-co">
+      <h4>🇨🇴 Colombia — Mixed/Expressive</h4>
+      <p>Although also relational, Colombians tend to be more <strong>verbally explicit</strong>. Feelings and opinions are expressed directly. Silences feel awkward. Meaning is carried primarily through words, tone, and facial expressions.</p>
+    </div>
+  </div>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-title">Hall's Proxemics</div>
+      <p>Hall identified four interpersonal distance zones. Japan generally maintains <strong>social</strong> and <strong>formal distances</strong> in public, especially with strangers. Colombians are comfortable with closer personal space — which can feel intrusive to Japanese people.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Hall's Chronemics</div>
+      <p>Hall distinguished <strong>monochronic</strong> (linear, sequential time) from <strong>polychronic</strong> (parallel, fluid time) cultures. Japan is monochronic — one thing at a time, strict scheduling. Colombia is polychronic — relationships and flexibility can shift the schedule.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOFSTEDE -->
+<section class="section" id="hofstede">
+  <div class="section-label">07 — Hofstede's Cultural Dimensions</div>
+  <h2 class="section-title">Measuring cultural values</h2>
+  <p class="section-intro">Geert Hofstede's (1980) framework measures six cultural dimensions. Comparing Japan and Colombia reveals key differences in workplace behavior, communication, and social expectations.</p>
+
+  <div class="card" style="margin-bottom:1rem">
+    <div style="display:flex;gap:1.5rem;margin-bottom:1.25rem;font-size:.75rem;color:var(--muted)">
+      <span style="display:flex;align-items:center;gap:.4rem"><span style="width:12px;height:12px;border-radius:2px;background:var(--jp-red);display:inline-block"></span> Japan</span>
+      <span style="display:flex;align-items:center;gap:.4rem"><span style="width:12px;height:12px;border-radius:2px;background:var(--co-blue);display:inline-block"></span> Colombia</span>
+    </div>
+    <div id="hofstedeBars"></div>
+  </div>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-title">What this means in practice</div>
+      <p><strong>Workplace:</strong> Japanese colleagues expect formality, clear hierarchy, and consensus decision-making. Avoid going around authority.</p>
+      <p style="margin-top:.625rem"><strong>Communication:</strong> Japan's high uncertainty avoidance means rules, procedures, and structure are highly valued. Breaking unspoken rules causes discomfort.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Key contrasts</div>
+      <p><strong>Masculinity:</strong> Japan scores very high (competition, achievement, work ethic). Colombia is more balanced between ambition and relationships.</p>
+      <p style="margin-top:.625rem"><strong>Long-term orientation:</strong> Japan plans decades ahead. Colombia tends to have a shorter-term, present-focused orientation where relationships matter more than long-term planning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOS DONTS -->
+<section class="section" id="dos">
+  <div class="section-label">08 — Practical Advice</div>
+  <h2 class="section-title">Do's and don'ts for Colombian visitors</h2>
+  <p class="section-intro">Simple, actionable advice to avoid the most common cultural mistakes.</p>
+
+  <!-- Japanese market + temple queue -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:1.75rem;border-radius:6px;overflow:hidden;height:200px">
+    <img src="https://images.unsplash.com/photo-1532649842991-5eff8e8a1b5d?w=600&q=75&auto=format&fit=crop" alt="Japanese food market" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+    <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=600&q=75&auto=format&fit=crop" alt="Japanese temple visitors queuing respectfully" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+  </div>
+
+  <div class="do-dont">
+    <div class="do-list">
+      <h3>✓ Do</h3>
+      <div class="item-row"><div class="item-icon">🕐</div><div class="item-text"><strong>Arrive on time</strong> — or even 5 minutes early. Lateness is disrespectful and unprofessional.</div></div>
+      <div class="item-row"><div class="item-icon">🙇</div><div class="item-text"><strong>Bow politely</strong> when greeting. A slight nod is fine for casual meetings; deeper bows for formal respect.</div></div>
+      <div class="item-row"><div class="item-icon">🤫</div><div class="item-text"><strong>Speak quietly</strong> on public transportation. Silence is the social norm and a sign of respect.</div></div>
+      <div class="item-row"><div class="item-icon">👟</div><div class="item-text"><strong>Remove your shoes</strong> when entering a home or traditional inn (<em>ryokan</em>).</div></div>
+      <div class="item-row"><div class="item-icon">🚶</div><div class="item-text"><strong>Follow queue lines</strong> — they are marked on train platforms. Wait your turn patiently.</div></div>
+      <div class="item-row"><div class="item-icon">🍱</div><div class="item-text"><strong>Say "itadakimasu"</strong> before eating — a sign of gratitude for the food and those who prepared it.</div></div>
+    </div>
+    <div class="dont-list">
+      <h3>✗ Don't</h3>
+      <div class="item-row"><div class="item-icon">📱</div><div class="item-text"><strong>Don't make phone calls</strong> on trains or buses. It's considered rude and antisocial.</div></div>
+      <div class="item-row"><div class="item-icon">🤗</div><div class="item-text"><strong>Don't hug or kiss</strong> Japanese acquaintances in greeting — it will cause genuine discomfort.</div></div>
+      <div class="item-row"><div class="item-icon">🔊</div><div class="item-text"><strong>Don't be loud</strong> in public spaces, restaurants, or temples. Keep your voice low and controlled.</div></div>
+      <div class="item-row"><div class="item-icon">🍢</div><div class="item-text"><strong>Don't walk and eat</strong> in most areas — eating is done sitting, not while strolling.</div></div>
+      <div class="item-row"><div class="item-icon">💴</div><div class="item-text"><strong>Don't tip</strong> — tipping is not customary and can even be considered offensive in Japan.</div></div>
+      <div class="item-row"><div class="item-icon">🚫</div><div class="item-text"><strong>Don't point</strong> directly at people or objects — use an open hand instead.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZZES -->
+<section class="section" id="quizzes">
+  <div class="section-label">09 — Test Your Knowledge</div>
+  <h2 class="section-title">Four interactive quizzes</h2>
+  <p class="section-intro">Put your new cultural knowledge to the test. Select a quiz below.</p>
+
+  <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem">
+    <button class="quiz-btn" onclick="loadQuiz(0)">Quiz 1: Etiquette</button>
+    <button class="quiz-btn" onclick="loadQuiz(1)" style="background:#2a7c6f">Quiz 2: Scenarios</button>
+    <button class="quiz-btn" onclick="loadQuiz(2)" style="background:#b8860b">Quiz 3: Anime & Culture</button>
+    <button class="quiz-btn" onclick="loadQuiz(3)" style="background:#4a2a80">Quiz 4: Lewis Model</button>
+  </div>
+
+  <div id="quizContainer"></div>
+</section>
+
+<!-- REFS -->
+<section class="section" id="refs">
+  <div class="section-label">10 — References</div>
+  <h2 class="section-title">Academic sources</h2>
+  <p class="section-intro">All frameworks and cultural information in this guide are grounded in peer-reviewed and widely cited academic sources.</p>
+  <ul class="ref-list">
+    <li class="ref-item">Benedict, R. (1946). <em>The chrysanthemum and the sword: Patterns of Japanese culture.</em> Houghton Mifflin.</li>
+    <li class="ref-item">Hall, E. T. (1959). <em>The silent language.</em> Doubleday.</li>
+    <li class="ref-item">Hall, E. T. (1966). <em>The hidden dimension.</em> Doubleday.</li>
+    <li class="ref-item">Hall, E. T. (1976). <em>Beyond culture.</em> Anchor Press.</li>
+    <li class="ref-item">Hofstede, G. (1980). <em>Culture's consequences: International differences in work-related values.</em> Sage Publications.</li>
+    <li class="ref-item">Hofstede, G., Hofstede, G. J., & Minkov, M. (2010). <em>Cultures and organizations: Software of the mind</em> (3rd ed.). McGraw-Hill.</li>
+    <li class="ref-item">Lewis, R. D. (1996). <em>When cultures collide: Managing successfully across cultures.</em> Nicholas Brealey Publishing.</li>
+    <li class="ref-item">Reischauer, E. O., & Jansen, M. B. (1995). <em>The Japanese today: Change and continuity.</em> Harvard University Press.</li>
+    <li class="ref-item">Napier, S. J. (2001). <em>Anime from Akira to Princess Mononoke.</em> Palgrave Macmillan.</li>
+    <li class="ref-item">Tobin, J. J. (Ed.). (1992). <em>Re-made in Japan.</em> Yale University Press.</li>
+    <li class="ref-item">Kasulis, T. P. (2002). <em>Intimacy or integrity: Philosophy and cultural difference.</em> University of Hawaii Press.</li>
+    <li class="ref-item">Jansen, M. B. (2000). <em>The making of modern Japan.</em> Harvard University Press.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer style="background:var(--ink);color:#6b6560;text-align:center;padding:2rem;font-size:.75rem;font-family:'DM Mono',monospace">
+  Colombia × Japan Intercultural Guide — Educational Resource · 2025
+</footer>
+
+<script>
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  const pct=(d.scrollTop/(d.scrollHeight-d.clientHeight))*100;
+  document.getElementById('progBar').style.width=pct+'%';
+});
+
+// Hofstede bars
+const dims=[
+  {name:'Power Distance',jp:54,co:67},
+  {name:'Individualism',jp:46,co:13},
+  {name:'Masculinity',jp:95,co:64},
+  {name:'Uncertainty Avoidance',jp:92,co:80},
+  {name:'Long-term Orientation',jp:88,co:13},
+  {name:'Indulgence',jp:42,co:83},
+];
+const hb=document.getElementById('hofstedeBars');
+dims.forEach(d=>{
+  hb.innerHTML+=`
+  <div class="dim-section">
+    <div class="dim-name">${d.name}</div>
+    <div class="dim-bars">
+      <div class="dim-bar-row">
+        <div class="dim-country">JP ${d.jp}</div>
+        <div class="dim-track"><div class="dim-fill dim-fill-jp" data-w="${d.jp}" style="width:0%"></div></div>
+      </div>
+      <div class="dim-bar-row">
+        <div class="dim-country">CO ${d.co}</div>
+        <div class="dim-track"><div class="dim-fill dim-fill-co" data-w="${d.co}" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>`;
+});
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.dim-fill').forEach(b=>{b.style.width=b.getAttribute('data-w')+'%'});
+      io.disconnect();
+    }
+  });
+},{threshold:.3});
+const hofEl=document.getElementById('hofstede');
+if(hofEl) io.observe(hofEl);
+
+// QUIZ DATA
+const quizzes=[
+  {
+    title:'Quiz 1: Japanese Etiquette',color:'#bc002d',
+    questions:[
+      {q:'What is the correct way to greet someone in Japan?',opts:['Hug them warmly','Kiss them on the cheek','Bow politely','Wave energetically'],ans:2,exp:'Bowing is the standard Japanese greeting. The depth of the bow reflects the level of formality — a slight nod for casual interactions, a deeper bow for showing respect.'},
+      {q:'What should you do before eating a meal in Japan?',opts:['Take photos of the food','Say "itadakimasu"','Immediately start eating','Thank the waiter with a tip'],ans:1,exp:'"Itadakimasu" (I humbly receive) is said before eating as a sign of gratitude for the food and everyone involved in preparing it.'},
+      {q:'Which behavior is acceptable on a Tokyo subway?',opts:['Making a phone call','Eating a full meal','Listening to music with headphones','Talking loudly with friends'],ans:2,exp:'Silence is the social norm on Japanese public transportation. Phone calls and loud talking are considered disrespectful to other passengers.'},
+      {q:'Is tipping common in Japan?',opts:['Yes, 10–15% is expected','Yes, but only in restaurants','No — tipping is not customary and can be offensive','Only for taxi drivers'],ans:2,exp:'Tipping is not part of Japanese culture. Service staff take pride in their work as a professional duty, and leaving a tip can sometimes be seen as rude or condescending.'},
+    ]
+  },
+  {
+    title:'Quiz 2: Everyday Scenarios',color:'#2a7c6f',
+    questions:[
+      {q:'Scenario: You arrive at a Japanese train station. You see marked waiting zones on the platform. What should you do?',scenario:'It is rush hour in Tokyo. Many commuters are waiting. You see yellow lines and footprints marking where to stand.',opts:['Stand wherever is convenient for you','Line up in the marked waiting zone','Board the train as soon as the doors open','Wait on the other side of the platform'],ans:1,exp:'In Japan, marked waiting zones are strictly followed. Passengers line up in two neat single-file lines on each side of the door and wait for exiting passengers before boarding.'},
+      {q:'Scenario: You are invited to a Japanese home. What should you do at the entrance?',scenario:'Your Japanese colleague has invited you to dinner. You arrive at their home and see a small step at the entrance (<em>genkan</em>) with shoes neatly arranged.',opts:['Keep your shoes on and walk in','Take off your shoes before entering','Only remove shoes if asked explicitly','Wipe your shoes on the mat and enter'],ans:1,exp:'Removing shoes at the entrance is a fundamental Japanese custom. The genkan (entryway step) marks the boundary between outside and inside. Always remove shoes and place them neatly.'},
+      {q:'Scenario: In a business meeting, your Japanese counterpart says "that would be difficult." What does this likely mean?',scenario:'You have proposed a new project timeline. Your Japanese colleague pauses and says "Sore wa chotto muzukashii…" (That would be a little difficult).',opts:['They need more information','They are very interested','They are politely saying "no"','They want a lower budget'],ans:2,exp:'Japanese high-context communication means "no" is rarely said directly. "That would be difficult" is a very common indirect refusal. Recognizing these soft negatives is crucial to understanding Japanese communication.'},
+      {q:'Scenario: You meet a senior Japanese executive. How should you handle their business card?',scenario:'At a formal meeting, the executive hands you their meishi (business card) with both hands and a slight bow.',opts:['Quickly pocket it','Write notes on it','Receive it with both hands, study it, then place it carefully on the table','Immediately put it in your wallet'],ans:2,exp:'In Japan, the business card (meishi) represents the person\'s professional identity. It should be received with both hands and a bow, read carefully, and never written on, folded, or carelessly stored.'},
+    ]
+  },
+  {
+    title:'Quiz 3: Anime & Japanese Values',color:'#b8860b',
+    questions:[
+      {q:'Which Japanese cultural value is best reflected in Naruto\'s story of an outcast who becomes a hero through sheer effort?',opts:['Conformity and following rules','Ganbaru — perseverance and never giving up','Respect for elders and authority','Indifference to social opinion'],ans:1,exp:'"Ganbaru" (頑張る) means to do one\'s best, persist, and never give up — a deeply important value in Japanese society. Naruto embodies this completely.'},
+      {q:'Dragon Ball\'s Goku constantly respects and trains under mentors. Which Japanese concept does this reflect?',opts:['Nemawashi — group consensus','Senpai-Kohai — mentor-student hierarchy','Wabi-sabi — finding beauty in imperfection','Ikigai — finding purpose in life'],ans:1,exp:'The senpai-kohai (senior-junior) relationship is fundamental in Japanese culture. Showing deep respect and gratitude to teachers and mentors is a central social norm in schools, martial arts, and workplaces.'},
+      {q:'Pokémon\'s theme of forming deep bonds with creatures reflects which Japanese spiritual tradition?',opts:['Buddhist focus on achieving Nirvana','Confucian family hierarchy','Shinto respect for nature and living spirits (kami)','Zen Buddhist minimalism'],ans:2,exp:'Shinto holds that all things — animals, plants, rivers, mountains — contain kami (spirits). This reverence for nature and living creatures is beautifully reflected in the world of Pokémon.'},
+      {q:'Anime became a major global cultural export partly because of which historical period?',opts:['The Meiji Restoration (1868)','The post-WWII period and economic miracle','The American occupation (1945–1952)','The Edo period (1603–1868)'],ans:1,exp:'After WWII, manga and anime emerged as powerful creative outlets. The economic miracle funded Japanese entertainment industries, and by the 1980s–90s, anime had become a global phenomenon.'},
+    ]
+  },
+  {
+    title:'Quiz 4: The Lewis Model',color:'#4a2a80',
+    questions:[
+      {q:'According to the Lewis Model, which category best describes Japanese culture?',opts:['Linear-active','Multi-active','Reactive','Adaptive'],ans:2,exp:'Japan is a prime example of a Reactive culture: polite, reserved, hierarchical, excellent listeners who prefer to respond rather than initiate, avoid direct confrontation, and show respect through silence and careful listening.'},
+      {q:'A Colombian professional arrives 20 minutes late to a meeting with a Japanese client. What Lewis Model clash is occurring?',opts:['Linear vs Reactive','Multi-active vs Reactive','Multi-active vs Linear-active','Reactive vs Linear-active'],ans:1,exp:'Colombia (Multi-active) prioritizes relationships and flexibility with time. Japan (Reactive) values punctuality and careful relationship-building. This is a direct Multi-active vs Reactive cultural clash.'},
+      {q:'Which trait is characteristic of Multi-active cultures like Colombia?',opts:['Task-focused, one thing at a time','Reserved, respond rather than initiate','Expressive, relationship-focused, flexible with time','Methodical, rely on facts and data'],ans:2,exp:'Multi-active cultures (like Colombia, Italy, and Brazil) prioritize relationships, are emotionally expressive, and more flexible about time — relationships can override schedules.'},
+      {q:'Which strategy would best help a Colombian working with Japanese colleagues?',opts:['Be very direct and say exactly what you think','Focus on relationship-building before business','Arrive casually and warm up with jokes','Speak quickly to show enthusiasm'],ans:1,exp:'With Reactive cultures like Japan, trust is built slowly and patiently. Letting the Japanese side set the pace and building genuine relationships before discussing business is the most effective approach.'},
+    ]
+  }
+];
+
+let curQ=0,curQuiz=0,score=0,answered=false;
+
+function loadQuiz(idx){
+  curQuiz=idx;curQ=0;score=0;answered=false;
+  renderQ();
+}
+
+function renderQ(){
+  const quiz=quizzes[curQuiz];
+  const qd=quiz.questions[curQ];
+  const total=quiz.questions.length;
+  answered=false;
+  const c=document.getElementById('quizContainer');
+  c.innerHTML=`
+  <div class="quiz-wrapper">
+    <div class="quiz-header">
+      <div class="quiz-title">${quiz.title}</div>
+      <div class="quiz-progress">${curQ+1} / ${total}</div>
+    </div>
+    ${qd.scenario?`<div class="q-scenario">${qd.scenario}</div>`:''}
+    <div class="q-text">${qd.q}</div>
+    <div class="opts">
+      ${qd.opts.map((o,i)=>`<button class="opt" id="opt${i}" onclick="pick(${i})">${o}</button>`).join('')}
+    </div>
+    <div class="q-feedback" id="qfb"></div>
+    <div class="quiz-nav">
+      <div class="score-display">Score: ${score} / ${total}</div>
+      <button class="quiz-btn" id="nxtBtn" disabled onclick="nextQ()">Next →</button>
+    </div>
+  </div>`;
+}
+
+function pick(i){
+  if(answered) return;
+  answered=true;
+  const qd=quizzes[curQuiz].questions[curQ];
+  const correct=qd.ans===i;
+  if(correct) score++;
+  for(let j=0;j<qd.opts.length;j++){
+    const btn=document.getElementById('opt'+j);
+    btn.disabled=true;
+    if(j===qd.ans) btn.classList.add('correct');
+    else if(j===i&&!correct) btn.classList.add('wrong');
+  }
+  const fb=document.getElementById('qfb');
+  fb.textContent=(correct?'✓ Correct! ':'✗ Not quite. ')+qd.exp;
+  fb.className='q-feedback show '+(correct?'correct':'wrong');
+  document.getElementById('nxtBtn').disabled=false;
+}
+
+function nextQ(){
+  const quiz=quizzes[curQuiz];
+  if(curQ<quiz.questions.length-1){curQ++;renderQ();}
+  else{showResult();}
+}
+
+function showResult(){
+  const quiz=quizzes[curQuiz];
+  const total=quiz.questions.length;
+  const pct=Math.round((score/total)*100);
+  const msg=pct===100?'Perfect score! You\'re ready to visit Japan.':pct>=75?'Great job! Review the sections you missed.':pct>=50?'Good effort — go back and review the guide!':'Keep studying — re-read the sections and try again!';
+  document.getElementById('quizContainer').innerHTML=`
+  <div class="quiz-wrapper">
+    <div class="quiz-result">
+      <div class="big">${score}/${total}</div>
+      <p>${msg}</p>
+      <p style="margin-bottom:1.5rem;color:var(--gold);font-family:'DM Mono',monospace;font-size:.85rem">${pct}% correct</p>
+      <button class="retry-btn" onclick="loadQuiz(${curQuiz})">Try again ↺</button>
+    </div>
+  </div>`;
+}
+
+loadQuiz(0);
+</script>
+</body>
+</html>
